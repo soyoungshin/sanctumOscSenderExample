@@ -95,6 +95,10 @@ void testApp::sendSampleCompositionBundle(){
 	addVideoMessage(&bundle, "/addComposition", fileNames[0], HF_FULL_SCREEN, 0, 180, rand()%540, 12, OF_LOOP_NORMAL);
 */
 
+
+
+    // a more complicated scenario.
+
     // one video that fills all six screens for ten seconds
 	addVideoMessage(&bundle, "/addComposition", fileNames[4], HF_FULL_SCREEN, 0, 10, rand()%540, 3, OF_LOOP_NORMAL);
 
@@ -104,8 +108,17 @@ void testApp::sendSampleCompositionBundle(){
 		addVideoMessage(&bundle, "/addComposition", fileNames[idx], idx, 10, 20, rand()%540, rand() % 10, OF_LOOP_NORMAL);
 	}
 
-	// followed by another video filling the screen
+	// followed by another video filling the screen that does not loop
 	addVideoMessage(&bundle, "/addComposition", fileNames[3], HF_FULL_SCREEN, 20, 30, rand()%540, 5, OF_LOOP_NONE);
+
+    addVideoMessage(&bundle, "/addComposition", fileNames[rand() % 6], HF_UPPER_THIRD, 25, 35, rand()%540, rand() % 10, OF_LOOP_NORMAL);
+    addVideoMessage(&bundle, "/addComposition", fileNames[rand() % 6], HF_CENTER_THIRD, 30, 35, rand()%540, rand() % 10, OF_LOOP_NORMAL);
+    addVideoMessage(&bundle, "/addComposition", fileNames[rand() % 6], HF_LOWER_THIRD, 30, 35, rand()%540, rand() % 10, OF_LOOP_NORMAL);
+
+    addVideoMessage(&bundle, "/addComposition", fileNames[rand() % 6], HF_LEFT_HALF, 35, 50, rand()%540, rand() % 10, OF_LOOP_NORMAL);
+    addVideoMessage(&bundle, "/addComposition", fileNames[rand() % 6], HF_RIGHT_HALF, 35, 50, rand()%540, rand() % 10, OF_LOOP_NORMAL);
+
+    addVideoMessage(&bundle, "/addComposition", fileNames[rand() % 6], HF_FULL_SCREEN, 50, 75, rand()%540, rand() % 10, OF_LOOP_NORMAL);
 
     // some subititles, this one lasts for ten seconds, and is placed at these x/y coordiates
 	addSubtitleMessage(&bundle, "/addSubtitle", "yo yo yo!!!", 0000, 10000, 400, 600);
